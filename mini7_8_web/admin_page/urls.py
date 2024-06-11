@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import IndexView, chat
+from . import views
 
-app_name = 'admin_page'
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
-    path('chat/', chat, name='chat'),
+    path('', views.home, name='home'),  # 메인 페이지 URL 패턴 추가
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
 ]
