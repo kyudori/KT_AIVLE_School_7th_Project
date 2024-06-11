@@ -24,4 +24,5 @@ urlpatterns = [
     path('rag-gpt/', include('rag_gpt.urls', namespace='rag_chatgpt')),
     path('chain-gpt/', include('chain_gpt.urls', namespace='chain_chatgpt')),
     path('', include('accounts.urls')),
+    path('admin_page/', include('admin_page.urls')),
 ]
