@@ -5,12 +5,12 @@ from django.http import HttpResponseRedirect
 from .models import UsageLog, VectorData
 from .forms import CSVUploadForm
 import csv
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 
 class UsageLogAdmin(admin.ModelAdmin):
     list_display = ('user', 'question', 'answer', 'timestamp')
     list_filter = ('timestamp', 'user')
-    search_fields = ('question', 'answer', 'user__username')
+    search_fields = ('question', 'answer', 'user__user_id')
 
 class VectorDataAdmin(admin.ModelAdmin):
     list_display = ('data',)

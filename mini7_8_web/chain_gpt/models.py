@@ -8,7 +8,7 @@ class UsageLog(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user.username} - {self.timestamp}'
+        return f'{self.user.user_id} - {self.timestamp}'
 
 class VectorData(models.Model):
     data = models.TextField()
