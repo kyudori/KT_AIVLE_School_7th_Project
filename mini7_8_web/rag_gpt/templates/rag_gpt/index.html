@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    {% block extrahead %}
+    <link rel="stylesheet" href="{% static 'rag_gpt/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h3>Chat Interface</h3><br>
+        <form action="{% url 'rag_chatgpt:chat' %}" method="post" enctype="application/x-www-form-urlencoded">
+            {% csrf_token %}
+            <div id="chat-box">
+                <div id="chat-history">
+                    {% if chat_history %}
+                        {% for message in chat_history %}
+                            <div class="message human">
+                                <span class="message-content">{{ message.human }}</span>
+                            </div>
+                            <div class="message ai">
+                                <span class="message-content">{{ message.ai }}</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div id="input-box">
+                    <textarea id="question" name="question" placeholder="질문을 입력하세요"></textarea>
+                    <button id="text-button" type="submit">질문</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

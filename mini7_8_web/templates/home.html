@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Mini7_8_Web</h1>
+<p>
+    {% if user.is_authenticated %}
+        Hello, {{ user.user_id }}! <a href="{% url 'account_logout' %}">Logout</a>
+    {% else %}
+        You are not logged in. <a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+</p>
+<ol>
+    <li><a href="{% url 'rag_chatgpt:index' %}">RAG GPT 페이지</a></li>
+    <li><a href="{% url 'chain_chatgpt:index' %}">LANG-CHAIN GPT 페이지</a></li>
+</ol>
+{% endblock %}
