@@ -1,0 +1,32 @@
+화면 흐름
+1. 홈 페이지 (:8000)
+•	기능: 기본적인 사이트 소개 및 네비게이션을 제공.
+•	템플릿: home.html
+•	링크:
+o	로그인 페이지로 이동: /accounts/login/
+2. 로그인 페이지 (/accounts/login/)
+•	기능: 사용자 인증을 위한 로그인 폼을 제공.
+•	템플릿: login.html
+•	링크:
+o	회원가입 페이지로 이동: /accounts/signup/
+o	ID/PW 찾기 페이지로 이동: /accounts/idpw/
+3. 회원가입 페이지 (/accounts/signup/)
+•	기능: 새로운 사용자를 위한 회원가입 폼을 제공.
+•	템플릿: signup.html
+•	폼 제출 후:
+o	회원가입 완료 후 /accounts/login/으로 리다이렉트.
+4. 로그인 후 홈 페이지 (:8000)
+•	기능: 로그인된 확인 후 새로운 홈 페이지를 제공.
+•	템플릿: home.html
+•	링크:
+o	RAG GPT 페이지로 이동: /rag-gpt/ (로그인 시에만 노출)
+o	Lang-Chain GPT 페이지로 이동: /chain-gpt/ (로그인 시에만 노출)
+5. RAG GPT 페이지 (/rag-gpt/)
+•	기능: RAG GPT 관련 기능을 제공하는 페이지.
+•	템플릿: result.html
+•	링크: 뒤로 가기(홈으로 이동) :8000
+6. Lang-Chain GPT 페이지 (/chain-gpt/)
+•	기능: Lang-Chain GPT 관련 기능을 제공하는 페이지.
+•	템플릿: result.html
+•	링크: 뒤로 가기(홈으로 이동) :8000
+7. ADMIN에서 벡터 DB 관리 (/admin/)
