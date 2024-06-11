@@ -11,8 +11,10 @@ class UsageLog(models.Model):
         return f'{self.user.user_id} - {self.timestamp}'
 
 class VectorData(models.Model):
-    data = models.TextField()
-    vector = models.BinaryField()  # 실제 벡터 데이터는 바이너리로 저장
+    category = models.CharField(max_length=255, default='default_category')
+    question = models.TextField(default='default_question')
+    answer = models.TextField(default='default_answer')
+    embedding = models.BinaryField(default=b'')  # 기본값으로 빈 바이트 설정
 
     def __str__(self):
-        return self.data[:50]  # 데이터의 첫 50자를 표시
+        return self.question[:50]  # 데이터의 첫 50자를 표시

@@ -5,7 +5,8 @@ from django.http import HttpResponseRedirect
 from .models import UsageLog, VectorData
 from .forms import CSVUploadForm
 import csv
-from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings import OpenAIEmbeddings
+import pickle  # 추가
 
 class UsageLogAdmin(admin.ModelAdmin):
     list_display = ('user', 'question', 'answer', 'timestamp')
@@ -13,8 +14,8 @@ class UsageLogAdmin(admin.ModelAdmin):
     search_fields = ('question', 'answer', 'user__user_id')
 
 class VectorDataAdmin(admin.ModelAdmin):
-    list_display = ('data',)
-    search_fields = ('data',)
+    list_display = ('category', 'question', 'answer')
+    search_fields = ('category', 'question', 'answer')
     change_list_template = "admin/vector_data_changelist.html"
 
     def get_urls(self):
@@ -29,12 +30,21 @@ class VectorDataAdmin(admin.ModelAdmin):
             form = CSVUploadForm(request.POST, request.FILES)
             if form.is_valid():
                 csv_file = request.FILES['csv_file']
-                reader = csv.reader(csv_file.read().decode('utf-8').splitlines())
+                # 인코딩을 명시적으로 지정
+                reader = csv.DictReader(csv_file.read().decode('euc-kr', errors='ignore').splitlines())
                 embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
                 for row in reader:
-                    data = row[0]
-                    vector = embeddings.embed_documents([data])[0]
-                    VectorData.objects.create(data=data, vector=vector)
+                    try:
+                        category = row['구분']
+                        qa = row['QA'].split('\n', 1)
+                        question = qa[0]
+                        answer = qa[1] if len(qa) > 1 else ''
+                        embedding = embeddings.embed_documents([question])[0]
+                        embedding_bytes = pickle.dumps(embedding)  # 리스트를 바이너리로 변환
+                        VectorData.objects.create(category=category, question=question, answer=answer, embedding=embedding_bytes)
+                    except KeyError as e:
+                        self.message_user(request, f"CSV 파일에 '{e.args[0]}' 열이 없습니다.")
+                        return HttpResponseRedirect("../")
                 self.message_user(request, "CSV file has been uploaded successfully.")
                 return HttpResponseRedirect("../")
         form = CSVUploadForm()

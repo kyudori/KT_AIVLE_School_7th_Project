@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
-from langchain_openai import OpenAIEmbeddings  # Updated import
+# from langchain_openai import OpenAIEmbeddings  # Updated import
+from langchain.embeddings import OpenAIEmbeddings
 from langchain.schema import HumanMessage, AIMessage
 from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores import Chroma
