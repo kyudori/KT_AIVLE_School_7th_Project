@@ -15,7 +15,7 @@ https://discord.gg/upXzegsCUk
 https://drive.google.com/drive/folders/1vVdcFe6iJi2gSgmN6JasCLwZz0Jqe66T?usp=drive_link
 
 ## Server Option
-Public IP : 3.143.24.42   
+Public IP : [3.14.131.41](http://3.14.131.41/)   
 user ID : ubuntu
    
 pem, ppk : https://drive.google.com/drive/folders/1cJr9PSZdcq3D5PNxwLrbwu783PGjg2L-?usp=drive_link
