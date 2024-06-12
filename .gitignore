@@ -1,3 +1,4 @@
 mini7_8_web/nohup.out
 *.pyc
 *.sqlite3
+.DS_Store
