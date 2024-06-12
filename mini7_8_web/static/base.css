@@ -1,16 +1,28 @@
 /* General styles */
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    cursor: url("https://img.icons8.com/?size=100&id=oqUz7NwX49jl&format=png&color=000000") 5 5, progress;
 }
+
+a:hover 
+{cursor: url("https://img.icons8.com/?size=100&id=oqUz7NwX49jl&format=png&color=000000") 5 5, progress; }
 
 /* Header styles */
 header {
-    background-color: #4CAF50;
+    font-family: 'yg-jalnan', cursive;
+    background-color: #96ccff;
     padding: 10px 0;
-    text-align: center;
     color: white;
 }
 
@@ -30,7 +42,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    text-decoration: underline;
+    color: darkgray;
 }
 
 /* Main content styles */
@@ -40,6 +52,7 @@ main {
 }
 
 h1 {
+    font-family: 'yg-jalnan', cursive;
     color: #333;
 }
 
@@ -72,7 +85,7 @@ form input {
 form button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -81,16 +94,32 @@ form button {
 }
 
 form button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
 a {
-    color: #4CAF50;
+    color: #007bff;
     text-decoration: none;
 }
 
-a:hover {
+ol a:hover {
+    color: #0056b3
+}
+
+p {
+    color: grey;
+}
+p a:hover {
     text-decoration: underline;
 }
 
 
+
+ol {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    font-family: 'yg-jalnan', cursive;
+}
