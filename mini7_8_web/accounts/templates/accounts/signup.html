@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +7,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
 </head>
 <body>
-    <header><h2>Sign Up</h2></header>
-        <form method="post">
-            <div class="signup-box">
-                {% csrf_token %}
-                <span class="signup-form">{{ form.as_p }}</span>
-                <button type="submit">계정 만들기</button>
-            </div>
-        </form>
-    <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+    <div class="signup-box">
+        <header><h2>Sign Up</h2></header>
+            <form method="post">
+                    {% csrf_token %}
+                    <span class="signup-form">{{ form.as_p }}</span>
+                    <button type="submit">계정 만들기</button>
+            </form>
+        <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+    </div>
 </body>
 </html>
