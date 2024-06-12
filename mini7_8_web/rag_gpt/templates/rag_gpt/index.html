@@ -39,10 +39,10 @@
                     {% if chat_history %}
                         {% for message in chat_history %}
                             <div class="message human">
-                                <span class="message-content">{{ message.human }}</span>
+                                <span class="message-content">{{ message.question }}</span>
                             </div>
                             <div class="message ai">
-                                <span class="message-content">{{ message.ai }}</span>
+                                <span class="message-content">{{ message.answer }}</span>
                             </div>
                         {% endfor %}
                     {% endif %}
