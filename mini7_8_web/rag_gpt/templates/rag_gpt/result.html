@@ -30,7 +30,7 @@
 
                 <div id="chat-box">
                     <div id="chat-history">
-                        {% for message in chat_history %}
+                        {% for message in rag_gpt_chat_history %}
                         <div class="message human">
                             <span class="message-content">{{ message.question }}</span>
                         </div>
