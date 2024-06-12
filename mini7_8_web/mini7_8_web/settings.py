@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "accounts",
     'rag_gpt',
     'chain_gpt',
-    'admin_page',
 ]
 
 MIDDLEWARE = [

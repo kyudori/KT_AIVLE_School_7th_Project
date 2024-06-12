@@ -21,7 +21,7 @@ def signup(request):
             user = authenticate(user_id=user_id, password=raw_password)
             if user is not None:
                 auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('home')
+            return redirect('/')
     else:
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
@@ -32,7 +32,7 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            return redirect('home')
+            return redirect('/')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
