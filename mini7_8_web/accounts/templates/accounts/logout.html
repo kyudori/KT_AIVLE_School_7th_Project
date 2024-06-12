@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/logout.css' %}">
+</head>
+<body>
+    <div class="logout-container">
+        <h2>Logout</h2>
+        <p>You have been logged out. Thank you for visiting!</p>
+        <a href="{% url 'accounts:login' %}">Login Again</a>
+    </div>
+</body>
+</html>
