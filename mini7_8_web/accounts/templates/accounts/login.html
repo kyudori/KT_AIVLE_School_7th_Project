@@ -3,15 +3,15 @@
 <head>
     <title>Login</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
 </head>
 <body>
-    <h2>Login</h2>
+    <header><h2>Login</h2><header>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+        <span class="signup-form">{{ form.as_p }}</span>
+        <button type="submit">로그인</button>
     </form>
-    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+    <p>Don't have an account? <a href="{% url 'accounts:signup' %}">Sign up</a></p>
 </body>
 </html>

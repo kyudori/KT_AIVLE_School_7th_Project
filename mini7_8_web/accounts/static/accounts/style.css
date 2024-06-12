@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -61,4 +68,42 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.signup-box {
+    display: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+h2 {
+    font-family: 'yg-jalnan', cursive;
+    height: 30px;
+    width: auto;
+    border-radius: 10px;
+    color:#007bff;
+    text-align: center;
+  }
+
+.signup-form {
+    text-align: left;
+}
+
+.signup-form li {
+    color: darkgray;
+}
+
+.signup-form p {
+    text-align: left;
 }
