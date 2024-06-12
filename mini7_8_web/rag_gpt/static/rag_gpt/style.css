@@ -1,84 +1,157 @@
 /* 전체 스타일 */
+
+
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  
-  .container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  #chat-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  #chat-history {
-    flex: 1;
-    overflow-y: auto;
-    max-height: 400px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-  }
-  
-  .message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-  }
-  
-  .message.human {
-    background-color: #96ccff;
-    text-align: right;
-  }
-  
-  .message.ai {
-    background-color: #eee;
-    text-align: left;
-  }
-  
-  .message-content {
-    display: inline-block;
-    max-width: 70%;
-  }
-  
-  #input-box {
-    display: flex;
-    gap: 10px;
-  }
-  
-  #question {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
-  
-  #text-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  #text-button:hover {
-    background-color: #0056b3;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+#chat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#chat-history {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow-x:hidden;
+}
+
+#chat-history::-webkit-scrollbar{
+  width: 10px;
+}
+
+#chat-history::-webkit-scrollbar-thumb{
+  background-color: #96ccff;
+  border-radius: 15px;    
+}
+
+#chat-history::-webkit-scrollbar-track{
+  background-color: rgba(0,0,0,0);
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.null {
+  width: max-content;
+  height: 50px;
+}
+
+.message.human {
+  background-color: #eee;
+  float: right;
+  width: fit-content;
+  max-width: 50%;
+  display: block;
+}
+
+.message.ai {
+  background-color: #96ccff;
+  text-align: left;
+  width: fit-content;
+  max-width: 50%;
+}
+
+.message-content {
+  display: inline-block;
+  max-width: 100%;
+}
+
+#input-box {
+  display: flex;
+  gap: 10px;
+}
+
+#question {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: none;
+  height: 2em;
+}
+
+#text-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+#text-button:hover {
+  background-color: #0056b3;
+}
+
+h3 {
+  font-family: 'yg-jalnan', cursive;
+  height: 30px;
+  width: auto;
+  background-color: #007bff;
+  border-radius: 10px;
+  color:white;
+  text-align: center;
+}
+
+
+.top {
+  font-family: 'yg-jalnan', cursive;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #96ccff;
+  padding: 10px 0;
+  color: white;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  color: darkgray;
+}

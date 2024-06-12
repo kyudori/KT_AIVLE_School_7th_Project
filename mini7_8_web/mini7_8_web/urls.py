@@ -20,7 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')),
     path('rag-gpt/', include('rag_gpt.urls', namespace='rag_chatgpt')),
     path('chain-gpt/', include('chain_gpt.urls', namespace='chain_chatgpt')),
     path('', include('accounts.urls')),
