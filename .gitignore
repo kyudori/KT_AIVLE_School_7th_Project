@@ -4,3 +4,4 @@ mini7_8_web/nohup.out
 *.sqlite3
 ./db/*
 ./database/*
+mini7_8_web/db.sqlite3
