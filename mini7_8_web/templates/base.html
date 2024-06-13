@@ -1,9 +1,12 @@
+<!-- base.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mini7_8_Web</title>
+    <title>{% block title %}Mini7_8_Web{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    {% block extrahead %}{% endblock %}
 </head>
 <body>
     <header>

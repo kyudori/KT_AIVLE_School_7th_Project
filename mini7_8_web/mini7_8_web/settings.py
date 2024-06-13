@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "accounts",
     'rag_gpt',
     'chain_gpt',
+    'doom',
+    'team',
 ]
 
 MIDDLEWARE = [
@@ -163,3 +165,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 APPEND_SLASH = False
+
+# Allow the site to be displayed in an iframe on the same origin
+X_FRAME_OPTIONS = 'SAMEORIGIN'

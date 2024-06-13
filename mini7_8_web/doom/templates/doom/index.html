@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doom Interface</title>
+    <link rel="stylesheet" href="{% static 'doom/style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="level">
+            <div class="inner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <span><input type="checkbox" /></span>
+                <span><input type="checkbox" /></span>
+                <span><input type="checkbox" /></span>
+                <span><input type="checkbox" /></span>
+                <span><input type="checkbox" /></span>
+                <span><input type="checkbox" /></span>
+            </div>
+        </div>
+    </div>
+    <div id="logo"><input type="checkbox"></div>
+    <div id="weapon"></div>
+    <div id="hud"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const wrapper = document.getElementById('wrapper');
+            const logo = document.getElementById('logo');
+            const weapon = document.getElementById('weapon');
+            const hud = document.getElementById('hud');
+
+            logo.addEventListener('click', () => {
+                logo.classList.add('active');
+                wrapper.classList.add('active');
+                weapon.classList.add('active');
+                hud.classList.add('active');
+            });
+
+            const checkboxes = document.querySelectorAll('.inner span input[type="checkbox"]');
+            checkboxes.forEach((checkbox, index) => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        if (index < checkboxes.length - 1) {
+                            checkboxes[index + 1].parentElement.style.animationPlayState = 'running';
+                        }
+                    }
+                });
+            });
+
+            function removeBackground() {
+                document.getElementById('logo').style.display = 'none';
+            }
+
+            document.body.addEventListener('click', removeBackground);
+            document.body.addEventListener('keydown', removeBackground);
+        });
+    </script>
+</body>
+</html>

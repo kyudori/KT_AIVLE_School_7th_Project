@@ -23,5 +23,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('rag-gpt/', include('rag_gpt.urls', namespace='rag_chatgpt')),
     path('chain-gpt/', include('chain_gpt.urls', namespace='chain_chatgpt')),
+    path('doom/', include('doom.urls', namespace='doom')),
+    path('team/', include('team.urls', namespace='team')),
     path('', include('accounts.urls')),
 ]

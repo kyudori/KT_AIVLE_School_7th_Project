@@ -1,17 +1,309 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block extrahead %}
+<style>
+    html, body {
+        margin: 0;
+        overflow: hidden;
+        background-image: url("{% static 'images/background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    #container {
+        flex: 1;
+        display: flex;
+    }
+    .sidebar {
+        width: 10vw;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .app-icon {
+        width: 8vw;
+        height: 8vw;
+        margin: 1vh;
+        cursor: pointer;
+    }
+    .content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .window {
+        width: 60vw;
+        height: 60vh;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        cursor: move;
+        resize: both;
+        overflow: hidden;
+    }
+    .window-header {
+        height: 5vh;
+        background-color: #ddd;
+        display: flex;
+        align-items: center;
+        padding: 0 1vw;
+        cursor: move;
+    }
+    .window-header .close {
+        margin-right: auto;
+        cursor: pointer;
+    }
+    .window-content {
+        flex: 1;
+        overflow: auto;
+        padding: 1vw;
+    }
+    .status-bar, .menu-bar {
+        width: 100%;
+        height: 5vh;
+        background-color: #333;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1vw;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    .status-bar {
+        position: fixed;
+        top: 0;
+    }
+    .menu-bar {
+        position: fixed;
+        top: 5vh;
+        display: flex;
+        justify-content: flex-end;
+        gap: 1vw;
+    }
+    .menu-bar a {
+        color: white;
+        text-decoration: none;
+    }
+    .menu-bar a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+        .sidebar {
+            width: 20%;
+        }
+        .app-icon {
+            width: 90%;
+            max-width: 50px;
+        }
+        .window {
+            width: 90%;
+            height: 90%;
+        }
+    }
+
+    /* Login alert box */
+    .alert-box {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        display: none;
+    }
+
+    .alert-box p {
+        margin: 0;
+        padding: 0;
+    }
+
+    .alert-box button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .alert-box button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<h1>Play with ChatBoy</h1>
-<ol>
-    <li><a href="{% url 'rag_chatgpt:index' %}">Go to RAG GPT</a></li>
-    <li><a href="{% url 'chain_chatgpt:index' %}">Go to LANG-CHAIN GPT</a></li>
-</ol>
-<p>
-    {% if user.is_authenticated %}
-        Hello, {{ user.user_id }}! <a href="{% url 'accounts:logout' %}">Logout</a>
-    {% else %}
-        You are not logged in. <a href="{% url 'accounts:login' %}">Login</a> or <a href="{% url 'accounts:signup' %}">Sign Up</a>
-    {% endif %}
-</p>
+<div id="container">
+    <div class="sidebar">
+        <img id="rag_gpt_icon" class="app-icon" src="{% static 'images/rag_gpt_icon.png' %}" alt="Rag GPT">
+        <img id="chain_gpt_icon" class="app-icon" src="{% static 'images/chain_gpt_icon.png' %}" alt="Chain GPT">
+        <img id="doom_icon" class="app-icon" src="{% static 'images/doom.png' %}" alt="Doom">
+        <img id="team_icon" class="app-icon" src="{% static 'images/aivle.png' %}" alt="Team">
+    </div>
+    <div class="content">
+        <div id="rag_gpt_window" class="window">
+            <div class="window-header">
+                <span class="close" onclick="closeWindow('rag_gpt_window')">✖</span>
+                <span>RAG GPT</span>
+            </div>
+            <div class="window-content">
+                <iframe src="/rag-gpt/" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+        <div id="chain_gpt_window" class="window">
+            <div class="window-header">
+                <span class="close" onclick="closeWindow('chain_gpt_window')">✖</span>
+                <span>CHAIN GPT</span>
+            </div>
+            <div class="window-content">
+                <iframe src="/chain-gpt/" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+        <div id="doom_window" class="window">
+            <div class="window-header">
+                <span class="close" onclick="closeWindow('doom_window')">✖</span>
+                <span>Doom</span>
+            </div>
+            <div class="window-content">
+                <iframe src="/doom/" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+        <div id="team_window" class="window">
+            <div class="window-header">
+                <span class="close" onclick="closeWindow('team_window')">✖</span>
+                <span>Team</span>
+            </div>
+            <div class="window-content">
+                <iframe src="/team/" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div id="login_alert" class="alert-box">
+    <p>Please login to access this application.</p>
+    <button onclick="closeAlert()">OK</button>
+</div>
+
+<script>
+    function isAuthenticated() {
+        return {{ user.is_authenticated|yesno:"true,false" }};
+    }
+
+    document.getElementById('rag_gpt_icon').onclick = function() {
+        if (isAuthenticated()) {
+            openWindow('rag_gpt_window');
+        } else {
+            showAlert();
+        }
+    };
+
+    document.getElementById('chain_gpt_icon').onclick = function() {
+        if (isAuthenticated()) {
+            openWindow('chain_gpt_window');
+        } else {
+            showAlert();
+        }
+    };
+
+    document.getElementById('doom_icon').onclick = function() {
+        if (isAuthenticated()) {
+            openWindow('doom_window');
+        } else {
+            showAlert();
+        }
+    };
+
+    document.getElementById('team_icon').onclick = function() {
+        if (isAuthenticated()) {
+            openWindow('team_window');
+        } else {
+            showAlert();
+        }
+    };
+
+    function openWindow(id) {
+        const win = document.getElementById(id);
+        win.style.display = 'flex';
+        win.style.top = '10px';
+        win.style.left = '110px';
+    }
+
+    function closeWindow(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    function dragElement(el) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        const header = el.querySelector(".window-header");
+        if (header) {
+            header.onmousedown = dragMouseDown;
+        } else {
+            el.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    function resizeElement(el) {
+        el.style.resize = "both";
+        el.style.overflow = "auto";
+    }
+
+    function showAlert() {
+        document.getElementById('login_alert').style.display = 'block';
+    }
+
+    function closeAlert() {
+        document.getElementById('login_alert').style.display = 'none';
+    }
+
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(win => {
+        dragElement(win);
+        resizeElement(win);
+    });
+</script>
 {% endblock %}
