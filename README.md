@@ -1,24 +1,9 @@
-# ISSUE UPDATE
-
-* Design : Figma Work complete
-* Front : 
-* Back : Server Setting complete
-* Model :
-
 # 미니프로젝트 7차
 조원 : 문동규, 김성규, 한규현, 박성훈, 박종범, 김아영, 하세호, 정주영
 
-#### Discord URL
-https://discord.gg/upXzegsCUk
-
-#### 공유 드라이브 URL
-https://drive.google.com/drive/folders/1vVdcFe6iJi2gSgmN6JasCLwZz0Jqe66T?usp=drive_link
-
 ## Server Option
 Public IP : [3.14.131.41](http://3.14.131.41/)   
-user ID : ubuntu
-   
-pem, ppk : https://drive.google.com/drive/folders/1cJr9PSZdcq3D5PNxwLrbwu783PGjg2L-?usp=drive_link
+현재 운영 종료
 
 서버 실행 명령어   
 sudo su - root   
