@@ -2,14 +2,13 @@
 조원 : 문동규, 김성규, 한규현, 박성훈, 박종범, 김아영, 하세호, 정주영
 
 ## 주제
-에이블스쿨 지원자들을 위한 QA Chatbot 서비스 구축
+- 에이블스쿨 지원자들을 위한 QA Chatbot 서비스 구축
 
 
-[결과물 및 내용은 ppt 참고
+- [결과물 및 내용은 ppt 참고
 ](https://github.com/kyudori/KT_AIVLE_School_7th_Project/blob/main/AI%20%EB%AF%B8%ED%94%84%207%EC%B0%A8%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx)
 ## Server Option
-Public IP : [3.14.131.41](http://3.14.131.41/)   
-현재 운영 종료
+- Public IP : [3.14.131.41](http://3.14.131.41/)   (현재 운영 종료)
 
 서버 실행 명령어   
 sudo su - root   
